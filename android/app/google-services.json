@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "170107326772",
+    "project_id": "bus-trackr",
+    "storage_bucket": "bus-trackr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:170107326772:android:7fd16fb8a7297e5bd75561",
+        "android_client_info": {
+          "package_name": "com.example.bustrackr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "170107326772-0uddd6k4ra30sjgg2hs2cd3g5n6524ji.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcTmruzyHkHeE85K6xkOW9qQXqEiKPQOk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "170107326772-0uddd6k4ra30sjgg2hs2cd3g5n6524ji.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
