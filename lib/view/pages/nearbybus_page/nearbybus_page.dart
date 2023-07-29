@@ -1,8 +1,9 @@
 import 'package:bustrackr/controllers/nerbybus/nerbybus_controller.dart';
 import 'package:bustrackr/core/constants/assets.dart';
+import 'package:bustrackr/core/shared/custom_containeropacity.dart';
 import 'package:bustrackr/view/widgets/nearbybus/allbus_nearbybus.dart';
 import 'package:bustrackr/view/widgets/home/drawer_home.dart';
-import 'package:bustrackr/view/widgets/nearbybus/topbar_nearbybuspage.dart';
+import 'package:bustrackr/view/widgets/nearbybus/searchbar_nearbybuspage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -23,12 +24,22 @@ class NerbyBusPage extends StatelessWidget {
                 children: [
                   Image.asset(
                     ImageAssets.maps,
-                    height: Get.height,
-                    width: Get.width,
+                    height: double.infinity,
+                    width: double.infinity,
                     fit: BoxFit.cover,
                   ),
-                  const AppBarNearbyBusPage(),
-                  const AllBusNearbyBusPage()
+                  const CustomContainerOpacity(),
+                  Column(
+                    children: [
+                      AppBar(
+                        backgroundColor: Colors.transparent,
+                        title: const Text("Nearby bus stops"),
+                      ),
+                      const SearchBarNearbyBus(),
+                      const Spacer(),
+                      const AllBusNearbyBusPage(),
+                    ],
+                  )
                 ],
               );
             }),

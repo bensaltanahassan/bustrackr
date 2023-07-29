@@ -8,6 +8,7 @@ class AppRoutes {
   static String searchbusbynumber = "/searchbusbynumber";
   static String dailyreminder = "/dailyreminder";
   static String updatedailyreminder = "/updatedailyreminder";
+  static String adddailyreminder = "/adddailyreminder";
   static String contactus = "/contactus";
   static String languages = "/languages";
 }

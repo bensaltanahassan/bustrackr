@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CustomBusHomePage extends StatelessWidget {
   const CustomBusHomePage({
@@ -27,21 +26,22 @@ class CustomBusHomePage extends StatelessWidget {
           ),
           title: Text(
             "Ligne $ligne",
-            style: GoogleFonts.roboto(),
+            style: Theme.of(context).textTheme.titleMedium,
           ),
           subtitle: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(
                 Icons.timer_outlined,
-                color: Colors.grey[600],
+                color: Colors.grey[700],
               ),
               const SizedBox(width: 10),
               Text(
                 "$temp min",
-                style: GoogleFonts.roboto(
-                  color: Colors.grey[600],
-                ),
+                style: Theme.of(context)
+                    .textTheme
+                    .titleSmall!
+                    .copyWith(color: Colors.grey[700]),
               ),
             ],
           ),

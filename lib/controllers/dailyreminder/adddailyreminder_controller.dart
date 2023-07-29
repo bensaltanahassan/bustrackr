@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_picker/flutter_picker.dart';
 import 'package:get/get.dart';
 
-class UpdateDailyReminderController extends GetxController {
+class AddDailyReminderController extends GetxController {
   String? userId;
   String? busNumber;
   String? stop;
@@ -72,7 +72,7 @@ class UpdateDailyReminderController extends GetxController {
     update();
   }
 
-  updateDailyReminder() {
+  addDailyReminder() {
     // check if all element not null
     if (busNumber == null ||
         stop == null ||
@@ -96,15 +96,5 @@ class UpdateDailyReminderController extends GetxController {
     // print it as string
     print("=================");
     print(dailyReminderModel.toJson());
-  }
-
-  @override
-  void onInit() {
-    busNumber = "18";
-    stop = "Marjane";
-    days = ["Monday", "Tuesday"];
-    timeBefore = "10";
-    update();
-    super.onInit();
   }
 }

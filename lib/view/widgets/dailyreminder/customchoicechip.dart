@@ -3,16 +3,21 @@ import 'package:google_fonts/google_fonts.dart';
 
 class CustomChoiceChipe extends StatelessWidget {
   const CustomChoiceChipe(
-      {super.key, this.onTap, this.isSelected = false, required this.label});
+      {super.key,
+      required this.onTap,
+      this.isSelected = false,
+      required this.label});
 
-  final void Function()? onTap;
+  final void Function(String?) onTap;
   final String label;
   final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      onTap: () {
+        onTap(label);
+      },
       child: Chip(
         label: Text(
           label,

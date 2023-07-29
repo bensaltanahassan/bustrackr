@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: AppThemes.themeEnglish,
       getPages: routes,
       defaultTransition: Transition.zoom,
-      transitionDuration: const Duration(milliseconds: 500),
+      transitionDuration: const Duration(milliseconds: 400),
     );
   }
 }

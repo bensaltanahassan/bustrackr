@@ -1,7 +1,8 @@
 import 'package:bustrackr/controllers/searchbus/searchbusbynumber_controller.dart';
 import 'package:bustrackr/core/constants/assets.dart';
+import 'package:bustrackr/core/shared/custom_containeropacity.dart';
 import 'package:bustrackr/view/widgets/home/drawer_home.dart';
-import 'package:bustrackr/view/widgets/searchbusbynumber/appbarsearchbusbynumber.dart';
+import 'package:bustrackr/view/widgets/searchbusbynumber/searchbarsearchbusbynumber.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,7 +28,16 @@ class SearchBusbyNumberPage extends StatelessWidget {
                     width: Get.width,
                     fit: BoxFit.cover,
                   ),
-                  const AppBarSearchBusByNumber(),
+                  const CustomContainerOpacity(),
+                  Column(
+                    children: [
+                      AppBar(
+                        backgroundColor: Colors.transparent,
+                        title: const Text("Search bus"),
+                      ),
+                      const SearchBarSearchBusByNumber(),
+                    ],
+                  )
                 ],
               );
             }),

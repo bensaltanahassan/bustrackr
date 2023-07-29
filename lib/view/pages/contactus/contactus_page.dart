@@ -63,7 +63,7 @@ class ContactUsPage extends StatelessWidget {
                 children: [
                   const Icon(
                     Icons.phone,
-                    color: Colors.blue,
+                    color: Colors.green,
                   ),
                   const SizedBox(width: 10),
                   Text(

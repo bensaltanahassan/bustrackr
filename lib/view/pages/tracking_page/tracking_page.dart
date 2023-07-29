@@ -1,5 +1,6 @@
 import 'package:bustrackr/controllers/tracking/tracking_controller.dart';
 import 'package:bustrackr/core/constants/assets.dart';
+import 'package:bustrackr/core/shared/custom_containeropacity.dart';
 import 'package:bustrackr/view/widgets/tracking/appbar_tracking.dart';
 import 'package:bustrackr/view/widgets/tracking/trajet_bustracking.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,7 @@ class TrackingPage extends StatelessWidget {
                 width: Get.width,
                 fit: BoxFit.cover,
               ),
+              const CustomContainerOpacity(),
               const AppBarTracking(),
               const TrajetsBusTracking(),
             ],

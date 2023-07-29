@@ -1,5 +1,6 @@
 import 'package:bustrackr/controllers/bus_details/busdetails_controller.dart';
 import 'package:bustrackr/core/constants/assets.dart';
+import 'package:bustrackr/core/shared/custom_containeropacity.dart';
 import 'package:bustrackr/view/widgets/busdetails/appbarbusdetails.dart';
 import 'package:bustrackr/view/widgets/busdetails/bottompagebusdetails.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,7 @@ class BusDetailsPage extends StatelessWidget {
                 width: Get.width,
                 fit: BoxFit.cover,
               ),
+              const CustomContainerOpacity(),
               const AppBarBusDetails(),
               const BottomPageBusDetails()
             ],

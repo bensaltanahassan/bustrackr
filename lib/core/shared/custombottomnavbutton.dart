@@ -5,21 +5,27 @@ class CustomBottomNavButton extends StatelessWidget {
   const CustomBottomNavButton({
     super.key,
     required this.text,
+    this.onTap,
   });
+
+  final void Function()? onTap;
 
   final String text;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blue,
-      padding: const EdgeInsets.symmetric(vertical: 12),
-      child: Text(
-        text,
-        textAlign: TextAlign.center,
-        style: GoogleFonts.roboto(
-          color: Colors.white,
-          fontSize: 18,
-          fontWeight: FontWeight.w500,
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        color: Colors.blue,
+        padding: const EdgeInsets.symmetric(vertical: 12),
+        child: Text(
+          text,
+          textAlign: TextAlign.center,
+          style: GoogleFonts.roboto(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+          ),
         ),
       ),
     );
