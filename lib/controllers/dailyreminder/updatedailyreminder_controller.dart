@@ -1,5 +1,4 @@
 import 'package:bustrackr/core/shared/notifications/showsnackbar.dart';
-import 'package:bustrackr/data/data_models/dailyreminder_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_picker/flutter_picker.dart';
 import 'package:get/get.dart';
@@ -85,17 +84,17 @@ class UpdateDailyReminderController extends GetxController {
       return;
     }
 
-    DailyReminderModel dailyReminderModel = DailyReminderModel(
-      userId: "userId", //TODO update it
-      busNumber: busNumber!,
-      stop: stop!,
-      days: days,
-      timeBefore: timeBefore!,
-    );
+    // DailyReminderModel dailyReminderModel = DailyReminderModel(
+    //   userId: "userId", //TODO update it
+    //   busNumber: busNumber!,
+    //   stop: stop!,
+    //   days: days,
+    //   timeBefore: timeBefore!,
+    // );
 
-    // print it as string
-    print("=================");
-    print(dailyReminderModel.toJson());
+    // // print it as string
+    // print("=================");
+    // print(dailyReminderModel.toJson());
   }
 
   @override

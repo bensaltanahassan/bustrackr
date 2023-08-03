@@ -1,5 +1,9 @@
 class AppRoutes {
   static String index = "/";
+  static String login = "/login";
+  static String signup = "/signup";
+  static String verifyemail = "/verifyemail";
+  static String forgetpassword = "/forgetpassword";
   static String homePage = "/homepage";
   static String busDetails = "/busDetails";
   static String nearbybus = "/nearbybus";

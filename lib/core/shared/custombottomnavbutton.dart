@@ -6,9 +6,11 @@ class CustomBottomNavButton extends StatelessWidget {
     super.key,
     required this.text,
     this.onTap,
+    this.color,
   });
 
   final void Function()? onTap;
+  final Color? color;
 
   final String text;
   @override
@@ -16,7 +18,7 @@ class CustomBottomNavButton extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        color: Colors.blue,
+        color: color ?? Colors.blue,
         padding: const EdgeInsets.symmetric(vertical: 12),
         child: Text(
           text,

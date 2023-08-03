@@ -1,4 +1,9 @@
 import 'package:bustrackr/core/constants/routes.dart';
+import 'package:bustrackr/core/middleware/mymiddleware.dart';
+import 'package:bustrackr/view/pages/auth/forgetpassword_page.dart';
+import 'package:bustrackr/view/pages/auth/login_page.dart';
+import 'package:bustrackr/view/pages/auth/signup_page.dart';
+import 'package:bustrackr/view/pages/auth/verifyemail_page.dart';
 import 'package:bustrackr/view/pages/bus_details/busdetails_page.dart';
 import 'package:bustrackr/view/pages/contactus/contactus_page.dart';
 import 'package:bustrackr/view/pages/dailyreminder.dart/adddailyreminder_page.dart';
@@ -13,8 +18,12 @@ import 'package:get/get.dart';
 
 List<GetPage<dynamic>>? routes = [
   //home
-  GetPage<dynamic>(name: AppRoutes.index, page: () => const NerbyBusPage()),
+  GetPage<dynamic>(
+      name: AppRoutes.index,
+      page: () => const LoginPage(),
+      middlewares: [MyMiddleWare()]),
   // GetPage<dynamic>(name: AppRoutes.index, page: () => const LanguagePage()),
+
   GetPage<dynamic>(
     name: AppRoutes.nearbybus,
     page: () => const NerbyBusPage(),
@@ -54,5 +63,23 @@ List<GetPage<dynamic>>? routes = [
   GetPage<dynamic>(
     name: AppRoutes.languages,
     page: () => const LanguagePage(),
+  ),
+  GetPage<dynamic>(
+    name: AppRoutes.login,
+    page: () => const LoginPage(),
+  ),
+  GetPage<dynamic>(
+    name: AppRoutes.signup,
+    page: () => const SignUpPage(),
+  ),
+
+  GetPage<dynamic>(
+    name: AppRoutes.verifyemail,
+    page: () => const VerifyEmailPage(),
+  ),
+
+  GetPage<dynamic>(
+    name: AppRoutes.forgetpassword,
+    page: () => const ForgetPasswordPage(),
   ),
 ];
