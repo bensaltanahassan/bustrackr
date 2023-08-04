@@ -13,7 +13,7 @@ class MyMiddleWare extends GetMiddleware {
   @override
   RouteSettings? redirect(String? route) {
     if (myServices.boxHive.get("step") == "2") {
-      return RouteSettings(name: AppRoutes.login);
+      return RouteSettings(name: AppRoutes.nearbybus);
     }
     if (myServices.boxHive.get("step") == "1") {
       return RouteSettings(name: AppRoutes.login);

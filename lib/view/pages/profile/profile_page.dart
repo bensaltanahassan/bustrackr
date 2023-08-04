@@ -1,13 +1,21 @@
+import 'package:bustrackr/controllers/profile/profile_controller.dart';
 import 'package:bustrackr/core/constants/assets.dart';
 import 'package:bustrackr/core/shared/custom_text_field.dart';
+import 'package:bustrackr/core/shared/custombottomnavbutton.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    ProfileController controller = Get.put(ProfileController());
     return Scaffold(
+        bottomNavigationBar: CustomBottomNavButton(
+          text: "Save",
+          onTap: () {},
+        ),
         appBar: AppBar(
           title: Text("My Profile",
               style: Theme.of(context).textTheme.titleMedium!.copyWith(
@@ -53,7 +61,7 @@ class ProfilePage extends StatelessWidget {
                                     horizontal: 0, vertical: 0),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () => controller.changePhoto(context),
                             icon: const Icon(
                               Icons.camera_alt_outlined,
                               color: Colors.blue,
