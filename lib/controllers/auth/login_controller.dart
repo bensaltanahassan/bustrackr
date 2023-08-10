@@ -1,3 +1,4 @@
+import 'package:bustrackr/data/data_models/users_model.dart';
 import 'package:bustrackr/data/data_source/auth_data.dart';
 import 'package:bustrackr/data/data_source/user_data.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -46,11 +47,12 @@ class LoginController extends GetxController {
             email: emailController.text.toLowerCase(),
             data: {"token": token},
           );
+          UserModel? user = await userData
+              .getUserByEmail(emailController.text.trim().toLowerCase());
 
           await myServices.boxHive.putAll({
-            "email": emailController.text.trim(),
-            "uid": resp.user!.uid,
             "step": "2",
+            "user": user!.toJson(),
           });
 
           Get.offAllNamed(AppRoutes.nearbybus);

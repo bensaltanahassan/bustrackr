@@ -8,6 +8,5 @@ class LanguagesController extends GetxController {
     'English',
     'Français',
     'العربية',
-    'Español',
   ];
 }

@@ -10,4 +10,6 @@ class ImageAssets {
   // =========images
   static String maps = "$rootImages/maps.jpg";
   static String hassan = "$rootImages/hassan.jpg";
+  static String busIcon = "$rootImages/bus_icon.png";
+  static String user = "$rootImages/user.png";
 }

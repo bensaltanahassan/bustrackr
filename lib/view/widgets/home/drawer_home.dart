@@ -1,5 +1,5 @@
 import 'package:bustrackr/controllers/home/home_controller.dart';
-import 'package:bustrackr/core/constants/assets.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,11 +19,29 @@ class CustomDrawer extends StatelessWidget {
             DrawerHeader(
                 child: Row(
               children: [
-                Image.asset(
-                  ImageAssets.hassan,
-                  height: 120,
-                  width: 120,
-                ),
+                if (controller.user!.photoUrl == null)
+                  const CircleAvatar(
+                    radius: 60,
+                    child: Icon(
+                      Icons.person,
+                      size: 60,
+                    ),
+                  ),
+                if (controller.user!.photoUrl != null)
+                  CachedNetworkImage(
+                    imageUrl: controller.user!.photoUrl!,
+                    height: 120,
+                    width: 120,
+                    fit: BoxFit.cover,
+                    cacheKey: controller.user!.photoUrl!,
+                    progressIndicatorBuilder:
+                        (context, url, downloadProgress) => Center(
+                      child: CircularProgressIndicator(
+                          value: downloadProgress.progress),
+                    ),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
+                  ),
                 const SizedBox(width: 10),
                 Expanded(
                   child: Column(
@@ -31,7 +49,7 @@ class CustomDrawer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Hassan Bensaltana",
+                        controller.user!.nomComplet!,
                         style: Theme.of(context).textTheme.titleSmall!.copyWith(
                               color: Colors.black,
                               fontSize: 16,

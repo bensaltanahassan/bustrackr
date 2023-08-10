@@ -5,6 +5,7 @@ class UserModel {
   String? token;
   String? nomComplet;
   String? dateCreated;
+  String? photoUrl;
 
   // tojson
   UserModel({
@@ -14,6 +15,7 @@ class UserModel {
     this.token,
     this.nomComplet,
     this.dateCreated,
+    this.photoUrl,
   });
 
   UserModel.fromJson(Map<String, dynamic> json) {
@@ -23,16 +25,19 @@ class UserModel {
     token = json['token'];
     nomComplet = json['nomComplet'];
     dateCreated = json['dateCreated'];
+    photoUrl = json['photoUrl'];
   }
 
+  // add toJson but just the element that not null
   Map<String, dynamic> toJson() {
-    return {
-      'uid': uid,
-      'email': email,
-      'telephone': telephone,
-      'token': token,
-      'nomComplet': nomComplet,
-      'dateCreated': dateCreated,
-    };
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['uid'] = uid;
+    data['email'] = email;
+    data['telephone'] = telephone;
+    data['token'] = token;
+    data['nomComplet'] = nomComplet;
+    data['dateCreated'] = dateCreated;
+    data['photoUrl'] = photoUrl;
+    return data;
   }
 }

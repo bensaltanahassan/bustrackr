@@ -1,11 +1,20 @@
 import 'dart:io';
 
+import 'package:bustrackr/controllers/home/home_controller.dart';
+import 'package:bustrackr/core/functions/showsnackbar.dart';
 import 'package:bustrackr/data/data_models/users_model.dart';
+import 'package:bustrackr/data/data_source/firestore_data.dart';
+import 'package:bustrackr/data/data_source/user_data.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProfileController extends GetxController {
-  UserModel? userModel;
+  UserModel? user;
+
+  bool? isLoading;
+
+  HomeController homeController = Get.find();
 
   late TextEditingController nameController;
   late TextEditingController emailController;
@@ -13,29 +22,71 @@ class ProfileController extends GetxController {
 
   File? image;
 
-  updateInformation() {}
+  updateInformation() async {
+    // check if there is updates
 
-  @override
-  void onInit() {
-    nameController = TextEditingController();
-    emailController = TextEditingController();
-    phoneController = TextEditingController();
+    isLoading = true;
+    update();
 
-    super.onInit();
+    UserData userData = UserData();
+
+    // update image
+    if (image != null) {
+      FireStoreData fireStoreData = FireStoreData();
+      if (user!.photoUrl == null) {
+        user!.photoUrl = await fireStoreData.uploadImage(image);
+      } else {
+        // updated it
+        user!.photoUrl =
+            await fireStoreData.updateImage(image, user!.photoUrl!);
+      }
+    }
+
+    UserModel updatedUser = UserModel(
+      nomComplet: nameController.text,
+      email: emailController.text.trim().toLowerCase(),
+      telephone: phoneController.text,
+      photoUrl: user?.photoUrl,
+      token: user?.token,
+      uid: user?.uid,
+      dateCreated: user?.dateCreated,
+    );
+
+    await userData.updateUserInfo(
+      email: user!.email!,
+      data: updatedUser.toJson(),
+    );
+
+    user = updatedUser;
+
+    // change in boxHive
+    await homeController.myServices.boxHive.put("user", updatedUser.toJson());
+    homeController.initData();
+    homeController.update();
+
+    isLoading = false;
+    update();
   }
 
-  chooseImageFromGallery() async {
-    // try {
-    //   final pickedFile =
-    //       await ImagePicker().getImage(source: ImageSource.gallery);
-    //   if (pickedFile != null) {
-    //     image = File(pickedFile.path);
-    //     update();
-    //   }
-    // } catch (_) {}
+  pickImage(ImageSource source) async {
+    try {
+      final pickedFile = await ImagePicker().pickImage(source: source);
+      if (pickedFile != null) {
+        image = File(pickedFile.path);
+        update();
+      } else {
+        MySnackBar.showCustomSnackBar(
+          title: 'Error',
+          message: 'No image selected',
+        );
+      }
+    } catch (_) {
+      MySnackBar.showCustomSnackBar(
+        title: 'Error',
+        message: 'Error while picking image',
+      );
+    }
   }
-
-  takePhoto() {}
 
   changePhoto(BuildContext context) {
     showModalBottomSheet(
@@ -59,21 +110,50 @@ class ProfileController extends GetxController {
                 leading: const Icon(Icons.camera_alt_outlined, size: 32),
                 title: const Text("Take a photo"),
                 onTap: () {
-                  // Implement the logic for taking a photo
+                  pickImage(ImageSource.camera);
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.photo, size: 32),
                 title: const Text("Choose from gallery"),
                 onTap: () {
-                  // Implement the logic for choosing from the gallery
+                  pickImage(ImageSource.gallery);
                 },
               ),
+              if (user!.photoUrl != null)
+                ListTile(
+                  leading: const Icon(Icons.delete, size: 32),
+                  title: const Text("Remove photo"),
+                  onTap: () async {
+                    FireStoreData fireStoreData = FireStoreData();
+                    await fireStoreData.deleteImage(user!.photoUrl!);
+                    image = null;
+                    user!.photoUrl = null;
+                    update();
+                  },
+                ),
             ],
           ),
         );
       },
     );
+  }
+
+  iniData() {
+    user = homeController.user;
+    nameController.text = user!.nomComplet!;
+    emailController.text = user!.email!;
+    phoneController.text = user!.telephone!;
+  }
+
+  @override
+  void onInit() {
+    nameController = TextEditingController();
+    emailController = TextEditingController();
+    phoneController = TextEditingController();
+    iniData();
+
+    super.onInit();
   }
 
   @override

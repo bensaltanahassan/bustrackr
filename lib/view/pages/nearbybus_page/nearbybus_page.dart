@@ -1,10 +1,10 @@
 import 'package:bustrackr/controllers/nerbybus/nerbybus_controller.dart';
-import 'package:bustrackr/core/constants/assets.dart';
 import 'package:bustrackr/core/shared/custom_containeropacity.dart';
 import 'package:bustrackr/view/widgets/nearbybus/allbus_nearbybus.dart';
 import 'package:bustrackr/view/widgets/home/drawer_home.dart';
 import 'package:bustrackr/view/widgets/nearbybus/searchbar_nearbybuspage.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:get/get.dart';
 
 class NerbyBusPage extends StatelessWidget {
@@ -22,11 +22,19 @@ class NerbyBusPage extends StatelessWidget {
             child: GetBuilder<NerbyBusController>(builder: (controller) {
               return Stack(
                 children: [
-                  Image.asset(
-                    ImageAssets.maps,
+                  SizedBox(
                     height: double.infinity,
                     width: double.infinity,
-                    fit: BoxFit.cover,
+                    child: controller.cameraPosition == null
+                        ? null
+                        : GoogleMap(
+                            mapType: MapType.hybrid,
+                            markers: controller.markers.toSet(),
+                            initialCameraPosition: controller.cameraPosition!,
+                            onMapCreated: (GoogleMapController mapcontroller) {
+                              controller.gmc = mapcontroller;
+                            },
+                          ),
                   ),
                   const CustomContainerOpacity(),
                   Column(

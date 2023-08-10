@@ -1,9 +1,10 @@
 import 'package:bustrackr/controllers/profile/profile_controller.dart';
-import 'package:bustrackr/core/constants/assets.dart';
 import 'package:bustrackr/core/shared/custom_text_field.dart';
 import 'package:bustrackr/core/shared/custombottomnavbutton.dart';
+import 'package:bustrackr/core/shared/handling_data_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -14,7 +15,7 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
         bottomNavigationBar: CustomBottomNavButton(
           text: "Save",
-          onTap: () {},
+          onTap: controller.updateInformation,
         ),
         appBar: AppBar(
           title: Text("My Profile",
@@ -24,85 +25,125 @@ class ProfilePage extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                   )),
         ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            children: [
-              Row(
+        body: GetBuilder<ProfileController>(builder: (controller) {
+          return HandlingDataView(
+            isLoading: controller.isLoading,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
                 children: [
-                  Image.asset(
-                    ImageAssets.hassan,
-                    height: 120,
-                    width: 120,
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: SizedBox(
-                      height: 120,
-                      width: 120,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Text("Hassan Bensaltana",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleSmall!
-                                  .copyWith(
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500,
-                                  )),
-                          TextButton.icon(
-                            style: ButtonStyle(
-                              padding:
-                                  MaterialStateProperty.all<EdgeInsetsGeometry>(
-                                const EdgeInsets.symmetric(
-                                    horizontal: 0, vertical: 0),
-                              ),
-                            ),
-                            onPressed: () => controller.changePhoto(context),
-                            icon: const Icon(
-                              Icons.camera_alt_outlined,
-                              color: Colors.blue,
-                              size: 20,
-                            ),
-                            label: Text("Changer profile pic",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleSmall!
-                                    .copyWith(
-                                      color: Colors.grey[700],
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                    )),
+                  Row(
+                    children: [
+                      if (controller.image == null &&
+                          controller.user!.photoUrl == null)
+                        const CircleAvatar(
+                          radius: 60,
+                          child: Icon(
+                            Icons.person,
+                            size: 60,
                           ),
-                        ],
-                      ),
+                        ),
+                      if (controller.image != null)
+                        Image.file(
+                          controller.image!,
+                          height: 120,
+                          width: 120,
+                          fit: BoxFit.cover,
+                        ),
+                      if (controller.image == null &&
+                          controller.user!.photoUrl != null)
+                        CachedNetworkImage(
+                          imageUrl: controller.user!.photoUrl!,
+                          height: 120,
+                          width: 120,
+                          fit: BoxFit.cover,
+                          cacheKey: controller.user!.photoUrl!,
+                          progressIndicatorBuilder:
+                              (context, url, downloadProgress) => Center(
+                            child: CircularProgressIndicator(
+                                value: downloadProgress.progress),
+                          ),
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
+                        ),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: SizedBox(
+                          height: 120,
+                          width: 120,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(controller.user!.nomComplet!,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall!
+                                      .copyWith(
+                                        color: Colors.black,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w500,
+                                      )),
+                              TextButton.icon(
+                                style: ButtonStyle(
+                                  padding: MaterialStateProperty.all<
+                                      EdgeInsetsGeometry>(
+                                    const EdgeInsets.symmetric(
+                                        horizontal: 0, vertical: 0),
+                                  ),
+                                ),
+                                onPressed: () =>
+                                    controller.changePhoto(context),
+                                icon: const Icon(
+                                  Icons.camera_alt_outlined,
+                                  color: Colors.blue,
+                                  size: 20,
+                                ),
+                                label: Text("Changer profile pic",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall!
+                                        .copyWith(
+                                          color: Colors.grey[700],
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500,
+                                        )),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  const Divider(),
+                  const SizedBox(height: 20),
+                  CustomTextFormFieldAuth(
+                    labelText: "nom complet",
+                    prefixIcon: const Icon(Icons.person),
+                    controller: controller.nameController,
+                  ),
+                  // email
+                  const SizedBox(height: 15),
+                  CustomTextFormFieldAuth(
+                    labelText: "email",
+                    prefixIcon: const Icon(Icons.email_outlined),
+                    controller: controller.emailController,
+                    keyboardType: TextInputType.emailAddress,
+                  ),
+                  const SizedBox(height: 15),
+                  //phone
+                  CustomTextFormFieldAuth(
+                    labelText: "phone",
+                    prefixIcon: const Icon(Icons.phone),
+                    controller: controller.phoneController,
+                    keyboardType: const TextInputType.numberWithOptions(
+                      decimal: true,
                     ),
-                  )
+                  ),
                 ],
               ),
-              const Divider(),
-              const SizedBox(height: 20),
-              const CustomTextFormFieldAuth(
-                labelText: "Hassan bensaltana",
-                prefixIcon: Icon(Icons.person),
-              ),
-              // email
-              const SizedBox(height: 15),
-              const CustomTextFormFieldAuth(
-                labelText: "bensaltanahassan@gmail.com",
-                prefixIcon: Icon(Icons.email_outlined),
-              ),
-              const SizedBox(height: 15),
-              //phone
-              const CustomTextFormFieldAuth(
-                labelText: "+212 6 66 66 66 66",
-                prefixIcon: Icon(Icons.phone),
-              ),
-            ],
-          ),
-        ));
+            ),
+          );
+        }));
   }
 }
