@@ -83,18 +83,6 @@ class UpdateDailyReminderController extends GetxController {
       );
       return;
     }
-
-    // DailyReminderModel dailyReminderModel = DailyReminderModel(
-    //   userId: "userId", //TODO update it
-    //   busNumber: busNumber!,
-    //   stop: stop!,
-    //   days: days,
-    //   timeBefore: timeBefore!,
-    // );
-
-    // // print it as string
-    // print("=================");
-    // print(dailyReminderModel.toJson());
   }
 
   @override

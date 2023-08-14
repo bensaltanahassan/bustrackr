@@ -53,7 +53,7 @@ class BottomPageBusDetails extends StatelessWidget {
                   showLoadingAnimation: false,
                   stepRadius: 8,
                   showStepBorder: false,
-                  lineDotRadius: 1.5,
+                  lineThickness: 1.5,
                   steps: const [
                     EasyStep(
                       customStep: CircleAvatar(

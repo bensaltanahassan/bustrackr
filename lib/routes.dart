@@ -12,7 +12,6 @@ import 'package:bustrackr/view/pages/dailyreminder.dart/updatedailyreminder_page
 import 'package:bustrackr/view/pages/language_page/language_page.dart';
 import 'package:bustrackr/view/pages/nearbybus_page/nearbybus_page.dart';
 import 'package:bustrackr/view/pages/profile/profile_page.dart';
-import 'package:bustrackr/view/pages/search_bus/search_buse_page.dart';
 import 'package:bustrackr/view/pages/tracking_page/tracking_page.dart';
 import 'package:get/get.dart';
 
@@ -40,10 +39,10 @@ List<GetPage<dynamic>>? routes = [
     name: AppRoutes.profilePage,
     page: () => const ProfilePage(),
   ),
-  GetPage<dynamic>(
-    name: AppRoutes.searchbusbynumber,
-    page: () => const SearchBusbyNumberPage(),
-  ),
+  // GetPage<dynamic>(
+  //   name: AppRoutes.searchbusbynumber,
+  //   page: () => const SearchBusbyNumberPage(),
+  // ),
   GetPage<dynamic>(
     name: AppRoutes.dailyreminder,
     page: () => const DailyReminderPage(),

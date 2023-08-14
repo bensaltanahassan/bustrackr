@@ -3,14 +3,12 @@ class StopModel {
   String stopName;
   double latitude;
   double longitude;
-  List<String> busesAtStop;
 
   StopModel({
     required this.stopId,
     required this.stopName,
     required this.latitude,
     required this.longitude,
-    required this.busesAtStop,
   });
 
   factory StopModel.fromJson(Map<String, dynamic> json) {
@@ -19,7 +17,6 @@ class StopModel {
       stopName: json['stopName'],
       latitude: json['latitude'],
       longitude: json['longitude'],
-      busesAtStop: List<String>.from(json['busesAtStop']),
     );
   }
 
@@ -29,7 +26,6 @@ class StopModel {
       'stopName': stopName,
       'latitude': latitude,
       'longitude': longitude,
-      'busesAtStop': busesAtStop,
     };
   }
 }

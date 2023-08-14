@@ -4,6 +4,7 @@ class CustomBusHomePage extends StatelessWidget {
   const CustomBusHomePage({
     super.key,
     this.onTap,
+    this.isChoiced = false,
     required this.ligne,
     required this.temp,
   });
@@ -11,10 +12,12 @@ class CustomBusHomePage extends StatelessWidget {
   final void Function()? onTap;
   final String ligne;
   final String temp;
+  final bool isChoiced;
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: isChoiced ? Colors.green : null,
       child: SizedBox(
         height: 100,
         width: 200,
@@ -37,7 +40,7 @@ class CustomBusHomePage extends StatelessWidget {
               ),
               const SizedBox(width: 10),
               Text(
-                "$temp min",
+                temp,
                 style: Theme.of(context)
                     .textTheme
                     .titleSmall!

@@ -41,6 +41,7 @@ class StepperBusTracking extends StatelessWidget {
     );
   }
 
+  // ignore: non_constant_identifier_names
   StepperData CustomStepBus({
     required String title,
     required String subTitle,

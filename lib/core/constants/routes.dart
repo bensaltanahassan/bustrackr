@@ -9,7 +9,7 @@ class AppRoutes {
   static String nearbybus = "/nearbybus";
   static String trackingPage = "/trackingpage";
   static String profilePage = "/profile";
-  static String searchbusbynumber = "/searchbusbynumber";
+  // static String searchbusbynumber = "/searchbusbynumber";
   static String dailyreminder = "/dailyreminder";
   static String updatedailyreminder = "/updatedailyreminder";
   static String adddailyreminder = "/adddailyreminder";

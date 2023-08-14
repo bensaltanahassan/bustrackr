@@ -83,48 +83,48 @@ class CustomDrawer extends StatelessWidget {
               ],
             )),
             CustomNavigationDrawerDestination(
-              title: "Nearby bus Stops",
-              subTitle: "Find bus stops near you",
+              title: "Arrêts de bus à proximité",
+              subTitle: "Arrêts de bus à proximité",
               icon: Icons.location_on_outlined,
               color: Colors.red,
             ),
+            // CustomNavigationDrawerDestination(
+            //   title: "Search a bus",
+            //   subTitle: "Find a bus by its number",
+            //   icon: Icons.bus_alert_outlined,
+            //   color: Colors.purple,
+            // ),
             CustomNavigationDrawerDestination(
-              title: "Search a bus",
-              subTitle: "Find a bus by its number",
-              icon: Icons.bus_alert_outlined,
-              color: Colors.purple,
-            ),
-            CustomNavigationDrawerDestination(
-              title: "Set Daily reminder",
-              subTitle: "Set a reminder for your daily bus",
+              title: "Configurer un rappel quotidien",
+              subTitle: "Un rappel pour votre bus quotidien",
               icon: Icons.notifications_active_outlined,
               color: Colors.green,
             ),
             // share app
             CustomNavigationDrawerDestination(
-              title: "Share the app",
-              subTitle: "Share the app with your friends",
+              title: "Partager l'application",
+              subTitle: "Partagez avec vos amis",
               icon: Icons.share_outlined,
               color: Colors.blue,
             ),
             // connect us
             CustomNavigationDrawerDestination(
-              title: "Connect us",
-              subTitle: "Connect us on social media",
+              title: "Connectez-nous",
+              subTitle: "Connectez-nous sur les RS",
               icon: Icons.connect_without_contact_outlined,
               color: Colors.purple,
             ),
             // change language
             CustomNavigationDrawerDestination(
-              title: "Change language",
-              subTitle: "Change the app language",
+              title: "Changer de langue",
+              subTitle: "Changer la langue de l'application",
               icon: Icons.language_outlined,
               color: Colors.orange,
             ),
             // logout
             CustomNavigationDrawerDestination(
-              title: "Logout",
-              subTitle: "Logout from the app",
+              title: "Déconnexion",
+              subTitle: "Déconnexion de l'application",
               icon: Icons.logout_outlined,
               color: Colors.red,
             ),
@@ -132,6 +132,7 @@ class CustomDrawer extends StatelessWidget {
     });
   }
 
+  // ignore: non_constant_identifier_names
   NavigationDrawerDestination CustomNavigationDrawerDestination(
       {required String title,
       required String subTitle,
@@ -143,15 +144,20 @@ class CustomDrawer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(title,
-              style: Theme.of(Get.context!)
-                  .textTheme
-                  .titleLarge!
-                  .copyWith(fontWeight: FontWeight.w600, fontSize: 16)),
+          Text(
+            title,
+            style: Theme.of(Get.context!)
+                .textTheme
+                .titleLarge!
+                .copyWith(fontWeight: FontWeight.w600, fontSize: 16),
+          ),
           Text(
             subTitle,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: Theme.of(Get.context!).textTheme.titleSmall!.copyWith(
                   color: Colors.grey[700],
+                  fontSize: 14,
                 ),
           ),
         ],

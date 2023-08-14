@@ -13,12 +13,12 @@ class AddDailyReminderPage extends StatelessWidget {
         Get.put(AddDailyReminderController());
     return Scaffold(
       bottomNavigationBar: CustomBottomNavButton(
-        text: "Add",
+        text: "Ajouter",
         onTap: controller.addDailyReminder,
       ),
       appBar: AppBar(
         title: const Text(
-          "Add Daily Reminder",
+          "Ajouter rappel quotidien",
         ),
       ),
       body: GetBuilder<AddDailyReminderController>(builder: (controller) {
@@ -37,7 +37,7 @@ class AddDailyReminderPage extends StatelessWidget {
                         color: Colors.green,
                       ),
                       SizedBox(width: 10),
-                      Text('Choose bus'),
+                      Text('Sélectionnez un bus'),
                     ],
                   ),
                 ),
@@ -45,7 +45,7 @@ class AddDailyReminderPage extends StatelessWidget {
               Wrap(
                 spacing: 10,
                 children: [
-                  for (int i = 1; i <= 30; i++)
+                  for (int i = 1; i <= 11; i++)
                     CustomChoiceChipe(
                       label: i.toString(),
                       onTap: (_) => controller.chooseBusNumber(i.toString()),
@@ -64,7 +64,7 @@ class AddDailyReminderPage extends StatelessWidget {
                         color: Colors.green,
                       ),
                       SizedBox(width: 10),
-                      Text('Choose stop'),
+                      Text('Sélectionnez un arrêt'),
                     ],
                   ),
                 ),
@@ -109,14 +109,6 @@ class AddDailyReminderPage extends StatelessWidget {
                     },
                     isSelected: controller.stop == "Miftah ELKhir",
                   ),
-                  // Hay Salam
-                  CustomChoiceChipe(
-                    label: "Hay Salam",
-                    onTap: (p0) => {
-                      controller.chooseStop("Hay Salam"),
-                    },
-                    isSelected: controller.stop == "Hay Salam",
-                  ),
                 ],
               ),
               const Card(
@@ -129,7 +121,7 @@ class AddDailyReminderPage extends StatelessWidget {
                         color: Colors.green,
                       ),
                       SizedBox(width: 10),
-                      Text("Select days"),
+                      Text("Sélectionnez les jours"),
                     ],
                   ),
                 ),
@@ -139,49 +131,49 @@ class AddDailyReminderPage extends StatelessWidget {
                 spacing: 10,
                 children: [
                   CustomChoiceChipe(
-                    label: "Monday",
+                    label: "Lundi",
                     onTap: (p0) => {
                       controller.chooseDay("Monday"),
                     },
                     isSelected: controller.days.contains("Monday"),
                   ),
                   CustomChoiceChipe(
-                    label: "Tuesday",
+                    label: "Mardi",
                     onTap: (p0) => {
                       controller.chooseDay("Tuesday"),
                     },
                     isSelected: controller.days.contains("Tuesday"),
                   ),
                   CustomChoiceChipe(
-                    label: "Wednesday",
+                    label: "Mercredi",
                     onTap: (p0) => {
                       controller.chooseDay("Wednesday"),
                     },
                     isSelected: controller.days.contains("Wednesday"),
                   ),
                   CustomChoiceChipe(
-                    label: "Thursday",
+                    label: "Jeudi",
                     onTap: (p0) => {
                       controller.chooseDay("Thursday"),
                     },
                     isSelected: controller.days.contains("Thursday"),
                   ),
                   CustomChoiceChipe(
-                    label: "Friday",
+                    label: "Vendredi",
                     onTap: (p0) => {
                       controller.chooseDay("Friday"),
                     },
                     isSelected: controller.days.contains("Friday"),
                   ),
                   CustomChoiceChipe(
-                    label: "Saturday",
+                    label: "Samedi",
                     onTap: (p0) => {
                       controller.chooseDay("Saturday"),
                     },
                     isSelected: controller.days.contains("Saturday"),
                   ),
                   CustomChoiceChipe(
-                    label: "Sunday",
+                    label: "Dimanche",
                     onTap: (p0) => {
                       controller.chooseDay("Sunday"),
                     },
@@ -208,7 +200,7 @@ class AddDailyReminderPage extends StatelessWidget {
                         color: Colors.green,
                       ),
                       const SizedBox(width: 10),
-                      const Text("Remind me"),
+                      const Text("Rappelez-moi"),
                       const Spacer(),
                       TextButton.icon(
                         onPressed: () {
@@ -217,7 +209,7 @@ class AddDailyReminderPage extends StatelessWidget {
                         icon: const Icon(Icons.edit_outlined),
                         label: Text(controller.timeBefore == null
                             ? ""
-                            : "${controller.timeBefore} min before"),
+                            : "${controller.timeBefore} min avant"),
                       )
                     ],
                   ),

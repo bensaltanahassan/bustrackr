@@ -30,10 +30,22 @@ class NerbyBusPage extends StatelessWidget {
                         : GoogleMap(
                             mapType: MapType.hybrid,
                             markers: controller.markers.toSet(),
+
                             initialCameraPosition: controller.cameraPosition!,
                             onMapCreated: (GoogleMapController mapcontroller) {
                               controller.gmc = mapcontroller;
                             },
+                            polylines: {
+                              Polyline(
+                                polylineId: const PolylineId('polyline_id'),
+                                color: Colors.blue,
+                                points: controller.polylinePoints,
+                                width: 4,
+                              ),
+                            },
+                            // change the place of zoom to the top
+                            zoomControlsEnabled: false,
+                            myLocationEnabled: true,
                           ),
                   ),
                   const CustomContainerOpacity(),
@@ -41,7 +53,7 @@ class NerbyBusPage extends StatelessWidget {
                     children: [
                       AppBar(
                         backgroundColor: Colors.transparent,
-                        title: const Text("Nearby bus stops"),
+                        title: const Text("Arrêts de bus à proximité"),
                       ),
                       const SearchBarNearbyBus(),
                       const Spacer(),

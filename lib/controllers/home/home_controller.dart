@@ -19,16 +19,14 @@ class HomeController extends GetxController {
       case 0:
         Get.toNamed(AppRoutes.nearbybus);
         break;
+
       case 1:
-        Get.toNamed(AppRoutes.searchbusbynumber);
-        break;
-      case 2:
         Get.toNamed(AppRoutes.dailyreminder);
         break;
-      case 4:
+      case 3:
         Get.toNamed(AppRoutes.contactus);
         break;
-      case 5:
+      case 4:
         Get.toNamed(AppRoutes.languages);
         break;
 

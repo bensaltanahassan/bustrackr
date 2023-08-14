@@ -14,7 +14,7 @@ class DailyReminderPage extends StatelessWidget {
       drawer: const CustomDrawer(),
       appBar: AppBar(
         title: const Text(
-          "Daily Reminders",
+          "Rappels quotidiens",
         ),
         actions: [
           IconButton(
@@ -32,9 +32,11 @@ class DailyReminderPage extends StatelessWidget {
       body: GetBuilder<DailyReminderController>(builder: (controller) {
         return ListView.separated(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          itemCount: 30,
+          itemCount: controller.allDailyReminders.length,
           itemBuilder: (context, index) {
-            return const CustomCardDailyReminder();
+            return CustomCardDailyReminder(
+              dailyReminderModel: controller.allDailyReminders[index],
+            );
           },
           separatorBuilder: (context, index) {
             return const SizedBox(height: 10);

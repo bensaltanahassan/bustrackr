@@ -1,4 +1,5 @@
 import 'package:bustrackr/core/constants/routes.dart';
+import 'package:bustrackr/data/data_models/dailyreminder_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,13 +7,19 @@ import 'package:google_fonts/google_fonts.dart';
 class CustomCardDailyReminder extends StatelessWidget {
   const CustomCardDailyReminder({
     super.key,
+    required this.dailyReminderModel,
   });
+
+  final DailyReminderModel dailyReminderModel;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.toNamed(AppRoutes.updatedailyreminder);
+        Get.toNamed(
+          AppRoutes.updatedailyreminder,
+          arguments: dailyReminderModel,
+        );
       },
       child: Card(
         color: Colors.white,
@@ -35,7 +42,7 @@ class CustomCardDailyReminder extends StatelessWidget {
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    "Bus ligne 18",
+                    "Bus ligne ${dailyReminderModel.bus.busNumber}",
                     style: GoogleFonts.roboto(
                       color: Colors.black,
                       fontSize: 18,
@@ -51,7 +58,7 @@ class CustomCardDailyReminder extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: "Remind me: ",
+                      text: "Rappelez-moi: ",
                       style: GoogleFonts.roboto(
                         color: Colors.grey[600],
                         fontSize: 16,
@@ -59,7 +66,7 @@ class CustomCardDailyReminder extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: "2 min ",
+                      text: "${dailyReminderModel.minutesBeforeArrival} min ",
                       style: GoogleFonts.roboto(
                         color: Colors.black,
                         fontSize: 16,
@@ -67,7 +74,7 @@ class CustomCardDailyReminder extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: "before ",
+                      text: "avant ",
                       style: GoogleFonts.roboto(
                         color: Colors.grey[600],
                         fontSize: 16,
@@ -75,7 +82,7 @@ class CustomCardDailyReminder extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: "Jnane Colombe2 ",
+                      text: "${dailyReminderModel.busStop.stopName} ",
                       style: GoogleFonts.roboto(
                         color: Colors.black,
                         fontSize: 16,
@@ -83,7 +90,7 @@ class CustomCardDailyReminder extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: "On ",
+                      text: "à ",
                       style: GoogleFonts.roboto(
                         color: Colors.grey[600],
                         fontSize: 16,
@@ -91,7 +98,7 @@ class CustomCardDailyReminder extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: "Mon, Tue, Thu ",
+                      text: dailyReminderModel.daysOfWeek.join(" "),
                       style: GoogleFonts.roboto(
                         color: Colors.black,
                         fontSize: 16,
