@@ -6,6 +6,7 @@ import 'package:bustrackr/core/shared/handling_data_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
@@ -17,13 +18,15 @@ class SignUpPage extends StatelessWidget {
       bottomNavigationBar: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text("Already have an account ?"),
+          Text(AppLocalizations.of(context)!.haveAccount),
           TextButton(
             style: ButtonStyle(
                 padding:
                     MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero)),
             onPressed: controller.goToLoginPage,
-            child: const Text("Login"),
+            child: Text(
+              AppLocalizations.of(context)!.login,
+            ),
           ),
         ],
       ),
@@ -51,7 +54,7 @@ class SignUpPage extends StatelessWidget {
                           width: 140,
                         ),
                         Text(
-                          "Welcome to",
+                          AppLocalizations.of(context)!.welcomeTo,
                           style: Theme.of(context)
                               .textTheme
                               .headlineMedium!
@@ -62,7 +65,7 @@ class SignUpPage extends StatelessWidget {
                               ),
                         ),
                         Text(
-                          "Bustrackr",
+                          "Bustracker",
                           style: Theme.of(context)
                               .textTheme
                               .headlineLarge!
@@ -87,12 +90,13 @@ class SignUpPage extends StatelessWidget {
                                 controller: controller.completNameController,
                                 validator: (v) =>
                                     ValidationInput.validInput(val: v, min: 5),
-                                decoration: const InputDecoration(
-                                  prefixIcon:
-                                      Icon(Icons.person, color: Colors.green),
-                                  labelText: "Full Name",
-                                  hintText: "Enter your name",
-                                  // disable all border
+                                decoration: InputDecoration(
+                                  prefixIcon: const Icon(Icons.person,
+                                      color: Colors.green),
+                                  labelText:
+                                      AppLocalizations.of(context)!.completName,
+                                  hintText: AppLocalizations.of(context)!
+                                      .enterYourCompletName,
                                   border: InputBorder.none,
                                 ),
                               ),
@@ -105,11 +109,13 @@ class SignUpPage extends StatelessWidget {
                                 validator: (v) => ValidationInput.validInput(
                                     val: v, type: "email"),
                                 keyboardType: TextInputType.emailAddress,
-                                decoration: const InputDecoration(
-                                  prefixIcon:
-                                      Icon(Icons.email, color: Colors.green),
-                                  labelText: "Email",
-                                  hintText: "Enter your email",
+                                decoration: InputDecoration(
+                                  prefixIcon: const Icon(Icons.email,
+                                      color: Colors.green),
+                                  labelText:
+                                      AppLocalizations.of(context)!.email,
+                                  hintText: AppLocalizations.of(context)!
+                                      .enterYourEmail,
                                   // disable all border
                                   border: InputBorder.none,
                                 ),
@@ -123,12 +129,13 @@ class SignUpPage extends StatelessWidget {
                                 validator: (v) => ValidationInput.validInput(
                                     val: v, type: "phone"),
                                 keyboardType: TextInputType.phone,
-                                decoration: const InputDecoration(
-                                  prefixIcon:
-                                      Icon(Icons.phone, color: Colors.blue),
-                                  labelText: "Phone",
-                                  hintText: "Enter your phone",
-                                  // disable all border
+                                decoration: InputDecoration(
+                                  prefixIcon: const Icon(Icons.phone,
+                                      color: Colors.blue),
+                                  labelText:
+                                      AppLocalizations.of(context)!.phone,
+                                  hintText: AppLocalizations.of(context)!
+                                      .enterYourPhoneNumber,
                                   border: InputBorder.none,
                                 ),
                               ),
@@ -144,11 +151,13 @@ class SignUpPage extends StatelessWidget {
                                   min: 8,
                                 ),
                                 obscureText: true,
-                                decoration: const InputDecoration(
-                                  prefixIcon:
-                                      Icon(Icons.lock, color: Colors.lightBlue),
-                                  labelText: "Password",
-                                  hintText: "Create password",
+                                decoration: InputDecoration(
+                                  prefixIcon: const Icon(Icons.lock,
+                                      color: Colors.lightBlue),
+                                  labelText:
+                                      AppLocalizations.of(context)!.password,
+                                  hintText: AppLocalizations.of(context)!
+                                      .enterYourPassword,
                                   border: InputBorder.none,
                                 ),
                               ),
@@ -161,17 +170,20 @@ class SignUpPage extends StatelessWidget {
                                     controller.confirmPassowrdController,
                                 validator: (v) {
                                   if (v != controller.passwordController.text) {
-                                    return "Password not match";
+                                    return AppLocalizations.of(context)!
+                                        .passwordsNotMatch;
                                   } else {
                                     return null;
                                   }
                                 },
                                 obscureText: true,
-                                decoration: const InputDecoration(
-                                  prefixIcon:
-                                      Icon(Icons.lock, color: Colors.lightBlue),
-                                  labelText: "Confirm Password",
-                                  hintText: "Confirm your password",
+                                decoration: InputDecoration(
+                                  prefixIcon: const Icon(Icons.lock,
+                                      color: Colors.lightBlue),
+                                  labelText: AppLocalizations.of(context)!
+                                      .confirmPassword,
+                                  hintText: AppLocalizations.of(context)!
+                                      .confirmPassword,
                                   border: InputBorder.none,
                                 ),
                               ),
@@ -182,7 +194,7 @@ class SignUpPage extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: CustomBottomNavButton(
-                            text: "Sign up",
+                            text: AppLocalizations.of(context)!.signup,
                             onTap: controller.signUp,
                           ),
                         )

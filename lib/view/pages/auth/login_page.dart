@@ -6,6 +6,7 @@ import 'package:bustrackr/core/shared/handling_data_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -17,13 +18,15 @@ class LoginPage extends StatelessWidget {
       bottomNavigationBar: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text("New user?"),
+          Text(AppLocalizations.of(context)!.dontHaveAccount),
           TextButton(
             style: ButtonStyle(
                 padding:
                     MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero)),
             onPressed: controller.goToSignUp,
-            child: const Text("Register"),
+            child: Text(
+              AppLocalizations.of(context)!.signup,
+            ),
           ),
         ],
       ),
@@ -46,7 +49,7 @@ class LoginPage extends StatelessWidget {
                         width: 140,
                       ),
                       Text(
-                        "Welcome to",
+                        AppLocalizations.of(context)!.welcomeTo,
                         style: Theme.of(context)
                             .textTheme
                             .headlineMedium!
@@ -57,7 +60,7 @@ class LoginPage extends StatelessWidget {
                             ),
                       ),
                       Text(
-                        "Bustrackr",
+                        "Bustracker",
                         style:
                             Theme.of(context).textTheme.headlineLarge!.copyWith(
                                   color: Colors.black,
@@ -81,11 +84,12 @@ class LoginPage extends StatelessWidget {
                               validator: (value) => ValidationInput.validInput(
                                   val: value, type: "email"),
                               keyboardType: TextInputType.emailAddress,
-                              decoration: const InputDecoration(
-                                prefixIcon:
-                                    Icon(Icons.email, color: Colors.green),
-                                labelText: "Email",
-                                hintText: "Enter your email",
+                              decoration: InputDecoration(
+                                prefixIcon: const Icon(Icons.email,
+                                    color: Colors.green),
+                                labelText: AppLocalizations.of(context)!.email,
+                                hintText: AppLocalizations.of(context)!
+                                    .enterYourEmail,
                                 // disable all border
                                 border: InputBorder.none,
                               ),
@@ -103,14 +107,16 @@ class LoginPage extends StatelessWidget {
                               decoration: InputDecoration(
                                 prefixIcon: const Icon(Icons.lock,
                                     color: Colors.lightBlue),
-                                labelText: "Password",
-                                hintText: "Enter your password",
+                                labelText:
+                                    AppLocalizations.of(context)!.password,
+                                hintText: AppLocalizations.of(context)!
+                                    .enterYourPassword,
                                 border: InputBorder.none,
                                 suffixIcon: TextButton(
                                   onPressed: controller.goToForgetPassword,
-                                  child: const Text(
-                                    "Forget ?",
-                                    style: TextStyle(color: Colors.grey),
+                                  child: Text(
+                                    AppLocalizations.of(context)!.forget,
+                                    style: const TextStyle(color: Colors.grey),
                                   ),
                                 ),
                               ),
@@ -122,7 +128,7 @@ class LoginPage extends StatelessWidget {
                       SizedBox(
                         width: double.infinity,
                         child: CustomBottomNavButton(
-                          text: "Login",
+                          text: AppLocalizations.of(context)!.login,
                           onTap: controller.login,
                         ),
                       )

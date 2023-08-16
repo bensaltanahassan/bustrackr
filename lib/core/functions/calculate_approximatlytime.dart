@@ -1,6 +1,8 @@
 import 'package:bustrackr/core/functions/decode_polyline.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 String calculateAndFormatApproximateTime(double distanceInMeters) {
   double timeInMinutes = calculateApproximateTime(distanceInMeters);
@@ -30,7 +32,7 @@ String formatTime(double numberMinutes) {
   } else if (numberMinutes > .1) {
     return '< 1 min';
   } else {
-    return 'Arrived';
+    return AppLocalizations.of(Get.context!)!.arrived;
   }
 }
 

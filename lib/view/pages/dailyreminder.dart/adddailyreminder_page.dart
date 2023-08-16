@@ -3,6 +3,7 @@ import 'package:bustrackr/core/shared/custombottomnavbutton.dart';
 import 'package:bustrackr/view/widgets/dailyreminder/customchoicechip.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddDailyReminderPage extends StatelessWidget {
   const AddDailyReminderPage({super.key});
@@ -13,12 +14,12 @@ class AddDailyReminderPage extends StatelessWidget {
         Get.put(AddDailyReminderController());
     return Scaffold(
       bottomNavigationBar: CustomBottomNavButton(
-        text: "Ajouter",
+        text: AppLocalizations.of(context)!.add,
         onTap: controller.addDailyReminder,
       ),
       appBar: AppBar(
-        title: const Text(
-          "Ajouter rappel quotidien",
+        title: Text(
+          AppLocalizations.of(context)!.addDailyReminder,
         ),
       ),
       body: GetBuilder<AddDailyReminderController>(builder: (controller) {
@@ -27,17 +28,18 @@ class AddDailyReminderPage extends StatelessWidget {
           child: ListView(
             padding: const EdgeInsets.only(bottom: 50),
             children: [
-              const Card(
+              Card(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.bus_alert_outlined,
                         color: Colors.green,
                       ),
-                      SizedBox(width: 10),
-                      Text('Sélectionnez un bus'),
+                      const SizedBox(width: 10),
+                      Text(AppLocalizations.of(context)!.selectBus),
                     ],
                   ),
                 ),
@@ -54,17 +56,18 @@ class AddDailyReminderPage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 10),
-              const Card(
+              Card(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.location_on_outlined,
                         color: Colors.green,
                       ),
-                      SizedBox(width: 10),
-                      Text('Sélectionnez un arrêt'),
+                      const SizedBox(width: 10),
+                      Text(AppLocalizations.of(context)!.selectStop),
                     ],
                   ),
                 ),
@@ -111,17 +114,18 @@ class AddDailyReminderPage extends StatelessWidget {
                   ),
                 ],
               ),
-              const Card(
+              Card(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.calendar_today_outlined,
                         color: Colors.green,
                       ),
-                      SizedBox(width: 10),
-                      Text("Sélectionnez les jours"),
+                      const SizedBox(width: 10),
+                      Text(AppLocalizations.of(context)!.selectDays),
                     ],
                   ),
                 ),
@@ -200,7 +204,7 @@ class AddDailyReminderPage extends StatelessWidget {
                         color: Colors.green,
                       ),
                       const SizedBox(width: 10),
-                      const Text("Rappelez-moi"),
+                      Text(AppLocalizations.of(context)!.remindMe),
                       const Spacer(),
                       TextButton.icon(
                         onPressed: () {
@@ -209,7 +213,7 @@ class AddDailyReminderPage extends StatelessWidget {
                         icon: const Icon(Icons.edit_outlined),
                         label: Text(controller.timeBefore == null
                             ? ""
-                            : "${controller.timeBefore} min avant"),
+                            : "${controller.timeBefore} min ${AppLocalizations.of(context)!.before}"),
                       )
                     ],
                   ),

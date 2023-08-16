@@ -7,6 +7,7 @@ import 'package:bustrackr/controllers/auth/forget_password_controller.dart';
 import 'package:bustrackr/core/shared/handling_data_view.dart';
 import 'package:bustrackr/core/shared/offlinewidget.dart';
 import 'package:lottie/lottie.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ForgetPasswordPage extends StatelessWidget {
   const ForgetPasswordPage({super.key});
@@ -17,7 +18,7 @@ class ForgetPasswordPage extends StatelessWidget {
     return OfflineWidget(
       child: Scaffold(
         bottomNavigationBar: CustomBottomNavButton(
-          text: "Envoyer",
+          text: AppLocalizations.of(context)!.send,
           onTap: controller.sendEmailChangePassword,
         ),
         body: GetBuilder<ForgetPasswordController>(builder: (controller) {
@@ -39,7 +40,7 @@ class ForgetPasswordPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        "Mot de passe oublié",
+                        AppLocalizations.of(context)!.forgotPassword,
                         style: Theme.of(context)
                             .textTheme
                             .headlineMedium!
@@ -52,7 +53,8 @@ class ForgetPasswordPage extends StatelessWidget {
                       // tell him to insert his email to receive an email for recuparition
                       const SizedBox(height: 10),
                       Text(
-                        "Entrez votre adresse e-mail pour recevoir un e-mail de récupération",
+                        AppLocalizations.of(context)!
+                            .enterYourEmailToReceiveRecoveryEmail,
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey[600],
@@ -61,7 +63,7 @@ class ForgetPasswordPage extends StatelessWidget {
                       const SizedBox(height: 20),
                       CustomTextFormFieldAuth(
                         controller: controller.emailController,
-                        labelText: "Email",
+                        labelText: AppLocalizations.of(context)!.email,
                         keyboardType: TextInputType.emailAddress,
                       ),
                     ],

@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:bustrackr/controllers/home/home_controller.dart';
-import 'package:bustrackr/core/functions/showsnackbar.dart';
+import 'package:bustrackr/core/shared/notifications/showsnackbar.dart';
 import 'package:bustrackr/data/data_models/users_model.dart';
 import 'package:bustrackr/data/data_source/firestore_data.dart';
 import 'package:bustrackr/data/data_source/user_data.dart';

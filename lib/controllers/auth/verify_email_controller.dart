@@ -1,6 +1,6 @@
 import 'package:bustrackr/core/classes/verifyemail_exception.dart';
 import 'package:bustrackr/core/constants/routes.dart';
-import 'package:bustrackr/core/functions/showsnackbar.dart';
+import 'package:bustrackr/core/shared/notifications/showsnackbar.dart';
 import 'package:bustrackr/data/data_source/auth_data.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';

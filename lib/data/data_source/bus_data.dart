@@ -4,12 +4,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class BusData {
   final buss = FirebaseFirestore.instance.collection("bus");
 
-  addBus(String busNumber, String busId, double lat, double lng) async {
+  addBus(String busNumber, double lat, double lng) async {
     await buss.add({
       "busNumber": busNumber,
-      "busId": busId,
       "lat": lat,
       "lng": lng,
+    }).then((value) async {
+      await buss.doc(value.id).update({"busId": value.id});
     });
   }
 

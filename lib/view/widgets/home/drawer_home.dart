@@ -2,6 +2,7 @@ import 'package:bustrackr/controllers/home/home_controller.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
@@ -67,7 +68,7 @@ class CustomDrawer extends StatelessWidget {
                         onPressed: () {
                           controller.goToProfilePage();
                         },
-                        child: Text("Voir Profile",
+                        child: Text(AppLocalizations.of(context)!.viewProfile,
                             style: Theme.of(context)
                                 .textTheme
                                 .titleSmall!
@@ -83,48 +84,44 @@ class CustomDrawer extends StatelessWidget {
               ],
             )),
             CustomNavigationDrawerDestination(
-              title: "Arrêts de bus à proximité",
-              subTitle: "Arrêts de bus à proximité",
+              title: AppLocalizations.of(context)!.nearbyBusStops,
+              subTitle: AppLocalizations.of(context)!.nearbyBusStops,
               icon: Icons.location_on_outlined,
               color: Colors.red,
             ),
-            // CustomNavigationDrawerDestination(
-            //   title: "Search a bus",
-            //   subTitle: "Find a bus by its number",
-            //   icon: Icons.bus_alert_outlined,
-            //   color: Colors.purple,
-            // ),
+
             CustomNavigationDrawerDestination(
-              title: "Configurer un rappel quotidien",
-              subTitle: "Un rappel pour votre bus quotidien",
+              title: AppLocalizations.of(context)!.setDailyReminder,
+              subTitle: AppLocalizations.of(context)!.dailyReminderForYourBus,
               icon: Icons.notifications_active_outlined,
               color: Colors.green,
             ),
             // share app
             CustomNavigationDrawerDestination(
-              title: "Partager l'application",
-              subTitle: "Partagez avec vos amis",
+              title: AppLocalizations.of(context)!.shareTheApp,
+              subTitle: AppLocalizations.of(context)!.shareWithYourFriends,
               icon: Icons.share_outlined,
               color: Colors.blue,
             ),
             // connect us
             CustomNavigationDrawerDestination(
-              title: "Connectez-nous",
-              subTitle: "Connectez-nous sur les RS",
+              title: AppLocalizations.of(context)!.contactUs,
+              subTitle:
+                  AppLocalizations.of(context)!.connectWithUsOnSocialMedia,
               icon: Icons.connect_without_contact_outlined,
               color: Colors.purple,
             ),
             // change language
             CustomNavigationDrawerDestination(
-              title: "Changer de langue",
-              subTitle: "Changer la langue de l'application",
+              title: AppLocalizations.of(context)!.changeLanguage,
+              subTitle: AppLocalizations.of(context)!.changeTheLanguageOfTheApp,
               icon: Icons.language_outlined,
               color: Colors.orange,
             ),
             // logout
             CustomNavigationDrawerDestination(
-              title: "Déconnexion",
-              subTitle: "Déconnexion de l'application",
+              title: AppLocalizations.of(context)!.logout,
+              subTitle: AppLocalizations.of(context)!.logoutFromTheApp,
               icon: Icons.logout_outlined,
               color: Colors.red,
             ),

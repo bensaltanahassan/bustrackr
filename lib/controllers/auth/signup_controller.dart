@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:bustrackr/core/classes/signup_exception.dart';
 import 'package:bustrackr/core/constants/routes.dart';
-import 'package:bustrackr/core/functions/showsnackbar.dart';
+import 'package:bustrackr/core/shared/notifications/showsnackbar.dart';
 
 class SignUpController extends GetxController {
   late bool showPassword;

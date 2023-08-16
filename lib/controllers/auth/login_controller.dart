@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:bustrackr/core/classes/login_exception.dart';
 import 'package:bustrackr/core/constants/routes.dart';
-import 'package:bustrackr/core/functions/showsnackbar.dart';
+import 'package:bustrackr/core/shared/notifications/showsnackbar.dart';
 import 'package:bustrackr/core/services/services.dart';
 
 class LoginController extends GetxController {

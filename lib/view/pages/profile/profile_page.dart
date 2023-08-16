@@ -5,6 +5,7 @@ import 'package:bustrackr/core/shared/handling_data_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -14,11 +15,11 @@ class ProfilePage extends StatelessWidget {
     ProfileController controller = Get.put(ProfileController());
     return Scaffold(
         bottomNavigationBar: CustomBottomNavButton(
-          text: "Save",
+          text: AppLocalizations.of(context)!.saveChanges,
           onTap: controller.updateInformation,
         ),
         appBar: AppBar(
-          title: Text("My Profile",
+          title: Text(AppLocalizations.of(context)!.myProfile,
               style: Theme.of(context).textTheme.titleMedium!.copyWith(
                     color: Colors.black,
                     fontSize: 20,
@@ -99,7 +100,9 @@ class ProfilePage extends StatelessWidget {
                                   color: Colors.blue,
                                   size: 20,
                                 ),
-                                label: Text("Changer profile pic",
+                                label: Text(
+                                    AppLocalizations.of(context)!
+                                        .changeProfilePic,
                                     style: Theme.of(context)
                                         .textTheme
                                         .titleSmall!
@@ -118,14 +121,14 @@ class ProfilePage extends StatelessWidget {
                   const Divider(),
                   const SizedBox(height: 20),
                   CustomTextFormFieldAuth(
-                    labelText: "nom complet",
+                    labelText: AppLocalizations.of(context)!.completName,
                     prefixIcon: const Icon(Icons.person),
                     controller: controller.nameController,
                   ),
                   // email
                   const SizedBox(height: 15),
                   CustomTextFormFieldAuth(
-                    labelText: "email",
+                    labelText: AppLocalizations.of(context)!.email,
                     prefixIcon: const Icon(Icons.email_outlined),
                     controller: controller.emailController,
                     keyboardType: TextInputType.emailAddress,
@@ -133,7 +136,7 @@ class ProfilePage extends StatelessWidget {
                   const SizedBox(height: 15),
                   //phone
                   CustomTextFormFieldAuth(
-                    labelText: "phone",
+                    labelText: AppLocalizations.of(context)!.phone,
                     prefixIcon: const Icon(Icons.phone),
                     controller: controller.phoneController,
                     keyboardType: const TextInputType.numberWithOptions(

@@ -3,6 +3,7 @@ import 'package:bustrackr/data/data_models/dailyreminder_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomCardDailyReminder extends StatelessWidget {
   const CustomCardDailyReminder({
@@ -42,7 +43,7 @@ class CustomCardDailyReminder extends StatelessWidget {
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    "Bus ligne ${dailyReminderModel.bus.busNumber}",
+                    "${AppLocalizations.of(context)!.busLine} ${dailyReminderModel.bus.busNumber}",
                     style: GoogleFonts.roboto(
                       color: Colors.black,
                       fontSize: 18,
@@ -58,7 +59,7 @@ class CustomCardDailyReminder extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: "Rappelez-moi: ",
+                      text: "${AppLocalizations.of(context)!.remindMe}: ",
                       style: GoogleFonts.roboto(
                         color: Colors.grey[600],
                         fontSize: 16,
@@ -74,7 +75,7 @@ class CustomCardDailyReminder extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: "avant ",
+                      text: "${AppLocalizations.of(context)!.before} ",
                       style: GoogleFonts.roboto(
                         color: Colors.grey[600],
                         fontSize: 16,
@@ -90,7 +91,7 @@ class CustomCardDailyReminder extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: "à ",
+                      text: "${AppLocalizations.of(context)!.at} ",
                       style: GoogleFonts.roboto(
                         color: Colors.grey[600],
                         fontSize: 16,
@@ -98,7 +99,7 @@ class CustomCardDailyReminder extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: dailyReminderModel.daysOfWeek.join(" "),
+                      text: dailyReminderModel.daysOfWeek.join(", "),
                       style: GoogleFonts.roboto(
                         color: Colors.black,
                         fontSize: 16,

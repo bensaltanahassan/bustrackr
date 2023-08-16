@@ -1,12 +1,36 @@
+import 'package:bustrackr/core/constants/locale.dart';
+import 'package:bustrackr/core/services/services.dart';
 import 'package:get/get.dart';
 
+class LanguageModel {
+  String language;
+  String languageCode;
+
+  LanguageModel(this.language, this.languageCode);
+}
+
 class LanguagesController extends GetxController {
-  int selectedOption = 0; // The default selected option index
+  late String lang;
+  late LanguageModel selectedLanguage;
 
   // List of options for the radio button list
-  final List<String> options = [
-    'English',
-    'Français',
-    'العربية',
+  List<LanguageModel> options = [
+    LanguageModel('Français', 'fr'),
+    LanguageModel('English', 'en'),
+    LanguageModel('العربية', 'ar'),
   ];
+
+  submitChangeLanguage(LanguageModel? languageModel) {
+    selectedLanguage = languageModel!;
+
+    changeLanguage(languageModel.languageCode);
+  }
+
+  @override
+  void onInit() {
+    lang = Get.find<MyServices>().boxHive.get("lang") ?? "fr";
+    selectedLanguage =
+        options.firstWhere((element) => element.languageCode == lang);
+    super.onInit();
+  }
 }

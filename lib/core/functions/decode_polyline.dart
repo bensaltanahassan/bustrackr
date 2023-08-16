@@ -73,29 +73,3 @@ Future<List<LatLng>> decodePolyline(List<String> points) async {
 
   return polylinePoints;
 }
-
-Future<List<LatLng>> decodePolylineBySegments(
-    List<List<String>> routeSegments) async {
-  List<LatLng> polylinePoints = [];
-  for (var e in routeSegments) {
-    List<String> points = e;
-    LatLng origin = LatLng(
-      double.parse(points[0].split(",")[0]),
-      double.parse(points[0].split(",")[1]),
-    );
-    LatLng destination = LatLng(
-      double.parse(points[1].split(",")[0]),
-      double.parse(points[1].split(",")[1]),
-    );
-    Set<Polyline> polylineSet = await getPolyline(
-      originLat: origin.latitude,
-      originLng: origin.longitude,
-      destLat: destination.latitude,
-      destLng: destination.longitude,
-    );
-    for (var element in polylineSet) {
-      polylinePoints.addAll(element.points);
-    }
-  }
-  return polylinePoints;
-}

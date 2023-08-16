@@ -14,7 +14,7 @@ class AllBusNearbyBusPage extends StatelessWidget {
     Get.find<NerbyBusController>();
     return GetBuilder<NerbyBusController>(builder: (controller) {
       return Container(
-        margin: const EdgeInsets.all(8),
+        margin: const EdgeInsets.only(bottom: 8),
         alignment: Alignment.bottomCenter,
         child: SizedBox(
           height: 100,
@@ -23,11 +23,10 @@ class AllBusNearbyBusPage extends StatelessWidget {
             itemCount: controller.listBus.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (c, i) => CustomBusHomePage(
-              isChoiced: controller.busChoised == i,
+              isChoiced: controller.bus != null &&
+                  controller.bus!.busId == controller.listBus[i].busId!,
               onTap: () {
                 controller.trackingSingleBus(controller.listBus[i].busId!);
-                controller.busChoised = i;
-                controller.update();
               },
               ligne: controller.listBus[i].busNumber!,
               temp: calculateAndFormatApproximateTime(

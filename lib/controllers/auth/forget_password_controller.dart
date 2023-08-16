@@ -2,7 +2,7 @@ import 'package:bustrackr/core/classes/forgetpassword_exception.dart';
 import 'package:bustrackr/data/data_source/auth_data.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:bustrackr/core/functions/showsnackbar.dart';
+import 'package:bustrackr/core/shared/notifications/showsnackbar.dart';
 
 class ForgetPasswordController extends GetxController {
   bool isLoading = false;

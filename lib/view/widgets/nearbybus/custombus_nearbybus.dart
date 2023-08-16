@@ -1,3 +1,4 @@
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class CustomBusHomePage extends StatelessWidget {
@@ -28,7 +29,7 @@ class CustomBusHomePage extends StatelessWidget {
             color: Colors.red,
           ),
           title: Text(
-            "Ligne $ligne",
+            "${AppLocalizations.of(context)!.line} $ligne",
             style: Theme.of(context).textTheme.titleMedium,
           ),
           subtitle: Row(

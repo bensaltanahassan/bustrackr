@@ -3,6 +3,7 @@ import 'package:bustrackr/view/widgets/dailyreminder/customcarddailyreminder.dar
 import 'package:bustrackr/view/widgets/home/drawer_home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DailyReminderPage extends StatelessWidget {
   const DailyReminderPage({super.key});
@@ -13,8 +14,8 @@ class DailyReminderPage extends StatelessWidget {
     return Scaffold(
       drawer: const CustomDrawer(),
       appBar: AppBar(
-        title: const Text(
-          "Rappels quotidiens",
+        title: Text(
+          AppLocalizations.of(context)!.dailyReminders,
         ),
         actions: [
           IconButton(

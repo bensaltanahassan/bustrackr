@@ -1,6 +1,8 @@
+import 'package:bustrackr/core/functions/copytocliboard.dart';
 import 'package:bustrackr/core/shared/custom_text_field.dart';
 import 'package:bustrackr/core/shared/custombottomnavbutton.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ContactUsPage extends StatelessWidget {
   const ContactUsPage({super.key});
@@ -10,8 +12,8 @@ class ContactUsPage extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: const CustomBottomNavButton(text: "Submit"),
       appBar: AppBar(
-        title: const Text(
-          "Contact Us",
+        title: Text(
+          AppLocalizations.of(context)!.contactUs,
         ),
       ),
       body: SingleChildScrollView(
@@ -21,7 +23,7 @@ class ContactUsPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Email Us",
+                AppLocalizations.of(context)!.sendUsAnEmail,
                 style: Theme.of(context)
                     .textTheme
                     .titleSmall!
@@ -43,7 +45,9 @@ class ContactUsPage extends StatelessWidget {
                   ),
                   const Spacer(),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      copyToClipboard("Bensaltana10@gmail.com");
+                    },
                     icon: const Icon(
                       Icons.copy_outlined,
                       color: Colors.blue,
@@ -53,7 +57,7 @@ class ContactUsPage extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               Text(
-                "Call Us",
+                AppLocalizations.of(context)!.callUs,
                 style: Theme.of(context)
                     .textTheme
                     .titleSmall!
@@ -75,7 +79,9 @@ class ContactUsPage extends StatelessWidget {
                   ),
                   const Spacer(),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      copyToClipboard("+216 22 22 22 22");
+                    },
                     icon: const Icon(
                       Icons.copy_outlined,
                       color: Colors.green,
@@ -84,33 +90,33 @@ class ContactUsPage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 20),
-              Text("Or write us",
+              Text(AppLocalizations.of(context)!.orWriteUs,
                   style: Theme.of(context)
                       .textTheme
                       .titleLarge!
                       .copyWith(fontWeight: FontWeight.w600)),
               const SizedBox(height: 20),
-              const CustomTextFormFieldAuth(
-                labelText: "Full Name",
-                prefixIcon: Icon(
+              CustomTextFormFieldAuth(
+                labelText: AppLocalizations.of(context)!.completName,
+                prefixIcon: const Icon(
                   Icons.person,
                   color: Colors.red,
                 ),
               ),
               const SizedBox(height: 15),
-              const CustomTextFormFieldAuth(
-                labelText: "Email",
-                prefixIcon: Icon(
+              CustomTextFormFieldAuth(
+                labelText: AppLocalizations.of(context)!.email,
+                prefixIcon: const Icon(
                   Icons.email,
                   color: Colors.red,
                 ),
               ),
               const SizedBox(height: 15),
-              const CustomTextFormFieldAuth(
+              CustomTextFormFieldAuth(
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
-                labelText: "Message",
-                prefixIcon: Icon(
+                labelText: AppLocalizations.of(context)!.message,
+                prefixIcon: const Icon(
                   Icons.message,
                   color: Colors.red,
                 ),

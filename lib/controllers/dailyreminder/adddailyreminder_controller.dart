@@ -2,6 +2,7 @@ import 'package:bustrackr/core/shared/notifications/showsnackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_picker/flutter_picker.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddDailyReminderController extends GetxController {
   String? userId;
@@ -12,25 +13,28 @@ class AddDailyReminderController extends GetxController {
 
   showPicker(BuildContext context) {
     Picker(
-        adapter: NumberPickerAdapter(
-          data: [
-            const NumberPickerColumn(
-              begin: 1,
-              end: 60,
-              suffix: Text(" min"),
-            ),
-          ],
-        ),
-        hideHeader: true,
-        looping: true,
-        selecteds: [
-          timeBefore != null ? int.parse(timeBefore!) - 1 : 10, // initial value
+      adapter: NumberPickerAdapter(
+        data: [
+          const NumberPickerColumn(
+            begin: 1,
+            end: 60,
+            suffix: Text(" min"),
+          ),
         ],
-        title: const Text("Please Select"),
-        onConfirm: (Picker picker, List value) {
-          timeBefore = picker.getSelectedValues()[0].toString();
-          update();
-        }).showDialog(context);
+      ),
+      hideHeader: true,
+      looping: true,
+      selecteds: [
+        timeBefore != null ? int.parse(timeBefore!) - 1 : 10, // initial value
+      ],
+      title: Text(AppLocalizations.of(context)!.pleaseSelect),
+      onConfirm: (Picker picker, List value) {
+        timeBefore = picker.getSelectedValues()[0].toString();
+        update();
+      },
+      cancelText: AppLocalizations.of(context)!.cancel,
+      confirmText: AppLocalizations.of(context)!.confirm,
+    ).showDialog(context);
   }
 
   chooseBusNumber(String busNumber) {

@@ -29,7 +29,9 @@ class HomeController extends GetxController {
       case 4:
         Get.toNamed(AppRoutes.languages);
         break;
-
+      case 5:
+        logout();
+        break;
       default:
     }
   }
@@ -38,6 +40,13 @@ class HomeController extends GetxController {
     Map<String, dynamic> data =
         Map<String, dynamic>.from(myServices.boxHive.get("user"));
     user = UserModel.fromJson(data);
+  }
+
+  logout() {
+    myServices.boxHive.clear();
+    myServices.boxHive.put("step", "1");
+
+    Get.offAllNamed(AppRoutes.login);
   }
 
   @override
