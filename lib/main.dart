@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:bustrackr/core/services/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'dart:io';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,18 +20,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MyServices myServices = Get.find();
-
+    String deviceLocal = Platform.localeName.split('_')[0];
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Bus Trackr',
       theme: AppThemes.themeEnglish,
       getPages: routes,
-      // home: const TestHome(),
       defaultTransition: Transition.zoom,
       transitionDuration: const Duration(milliseconds: 400),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      locale: Locale("${myServices.boxHive.get('lang')}"),
+
+      locale: const Locale("ar"),
+
+      // locale: myServices.boxHive.get('lang') != null
+      //     ? Locale("${myServices.boxHive.get('lang')}")
+      //     : Locale(deviceLocal),
     );
   }
 }

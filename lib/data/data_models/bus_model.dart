@@ -11,6 +11,7 @@ class BusModel {
   double? lng;
   double? distanceInMeters;
   RoutesModel? routes;
+  List<String>? stops;
 
   BusModel({
     this.busId,
@@ -19,26 +20,28 @@ class BusModel {
     this.lng,
     this.distanceInMeters,
     this.routes,
+    this.stops,
   });
 
-  factory BusModel.fromJson(Map<String, dynamic> json) => BusModel(
+  factory BusModel.fromJson(Map<String, dynamic> json) {
+    return BusModel(
         busId: json["busId"],
         busNumber: json["busNumber"],
         lat: json["lat"]?.toDouble(),
         lng: json["lng"]?.toDouble(),
-        distanceInMeters: json["distanceInMeters"]?.toDouble(),
         routes: json["routes"] == null
             ? null
             : RoutesModel.fromJson(json["routes"]),
-      );
+        stops: json['stops']?.cast<String>());
+  }
 
   Map<String, dynamic> toJson() => {
         "busId": busId,
         "busNumber": busNumber,
         "lat": lat,
         "lng": lng,
-        "distanceInMeters": distanceInMeters,
         "routes": routes?.toJson(),
+        "stops": stops
       };
 }
 

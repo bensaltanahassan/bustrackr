@@ -67,7 +67,8 @@ class CustomCardDailyReminder extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: "${dailyReminderModel.minutesBeforeArrival} min ",
+                      text:
+                          "${dailyReminderModel.minutesBeforeArrival} ${AppLocalizations.of(context)!.min} ",
                       style: GoogleFonts.roboto(
                         color: Colors.black,
                         fontSize: 16,
@@ -83,7 +84,7 @@ class CustomCardDailyReminder extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: "${dailyReminderModel.busStop.stopName} ",
+                      text: "${dailyReminderModel.busStop.name} ",
                       style: GoogleFonts.roboto(
                         color: Colors.black,
                         fontSize: 16,
@@ -99,7 +100,10 @@ class CustomCardDailyReminder extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: dailyReminderModel.daysOfWeek.join(", "),
+                      text: dailyReminderModel.daysOfWeek
+                          .map((day) =>
+                              AppLocalizations.of(context)!.dayTranslate(day))
+                          .join(', '),
                       style: GoogleFonts.roboto(
                         color: Colors.black,
                         fontSize: 16,
@@ -114,5 +118,28 @@ class CustomCardDailyReminder extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+extension DayLocalization on AppLocalizations {
+  String dayTranslate(String day) {
+    switch (day.toLowerCase()) {
+      case "lundi":
+        return monday;
+      case "mardi":
+        return tuesday;
+      case "mercredi":
+        return wednesday;
+      case "jeudi":
+        return thursday;
+      case "vendredi":
+        return friday;
+      case "samedi":
+        return saturday;
+      case "dimanche":
+        return sunday;
+      default:
+        return day;
+    }
   }
 }

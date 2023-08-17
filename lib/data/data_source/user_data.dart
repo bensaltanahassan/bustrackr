@@ -6,7 +6,7 @@ class UserData {
 
   Future<void> addUser(UserModel user) async {
     try {
-      await users.add(user.toJson());
+      await users.doc(user.uid).set(user.toJson());
     } catch (_) {}
   }
 

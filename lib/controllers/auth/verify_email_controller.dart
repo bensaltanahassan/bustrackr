@@ -4,6 +4,7 @@ import 'package:bustrackr/core/shared/notifications/showsnackbar.dart';
 import 'package:bustrackr/data/data_source/auth_data.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class VerifyEmailController extends GetxController {
   bool? isLoading;
@@ -23,13 +24,13 @@ class VerifyEmailController extends GetxController {
       if (resp is FirebaseAuthException) {
         String message = EmailVerificationException(resp).handleException();
         MySnackBar.showCustomSnackBar(
-          title: "Error",
+          title: AppLocalizations.of(Get.context!)!.error,
           message: message,
         );
       } else {
         MySnackBar.showCustomSnackBar(
-          title: "Success",
-          message: "Email sent successfully",
+          title: AppLocalizations.of(Get.context!)!.success,
+          message: AppLocalizations.of(Get.context!)!.emailSentSuccessfully,
         );
       }
       isLoading = false;

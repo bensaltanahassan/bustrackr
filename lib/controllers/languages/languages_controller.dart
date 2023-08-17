@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bustrackr/core/constants/locale.dart';
 import 'package:bustrackr/core/services/services.dart';
 import 'package:get/get.dart';
@@ -28,7 +30,8 @@ class LanguagesController extends GetxController {
 
   @override
   void onInit() {
-    lang = Get.find<MyServices>().boxHive.get("lang") ?? "fr";
+    lang = Get.find<MyServices>().boxHive.get("lang") ??
+        Platform.localeName.split('_')[0];
     selectedLanguage =
         options.firstWhere((element) => element.languageCode == lang);
     super.onInit();

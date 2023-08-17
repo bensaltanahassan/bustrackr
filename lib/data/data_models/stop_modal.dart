@@ -1,31 +1,31 @@
 class StopModel {
   String stopId;
-  String stopName;
-  double latitude;
-  double longitude;
+  String name;
+  double lat;
+  double lng;
 
   StopModel({
     required this.stopId,
-    required this.stopName,
-    required this.latitude,
-    required this.longitude,
+    required this.name,
+    required this.lat,
+    required this.lng,
   });
 
   factory StopModel.fromJson(Map<String, dynamic> json) {
     return StopModel(
       stopId: json['stopId'],
-      stopName: json['stopName'],
-      latitude: json['latitude'],
-      longitude: json['longitude'],
+      name: json['name'],
+      lat: json['lat'],
+      lng: json['lng'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'stopId': stopId,
-      'stopName': stopName,
-      'latitude': latitude,
-      'longitude': longitude,
+      'stopName': name,
+      'latitude': lat,
+      'longitude': lng,
     };
   }
 }

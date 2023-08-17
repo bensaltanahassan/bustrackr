@@ -80,6 +80,12 @@
     "remindMe": "Rappelez-moi",
     "before": "avant",
     "at": "à",
+    "min" : "min",
+    "hr" : "hr",
+    "dailyAddedWithSuccess": "Le rappel quotidien est ajouté avec succès.",
+    "dailyReminderUpdatedSuccessfully": "Votre rappel quotidien a été mis à jour avec succès.",
+     "dailyReminderDeletedSuccessfully": "Rappel quotidien supprimé avec succès.",
+
 
     "@_SET_DAILY_REMINDER": {},
     "update": "Mettre à jour",
@@ -116,7 +122,32 @@
     "line": "Ligne",
     "cancel": "Annuler",
     "ok": "Ok",
-    "confirm": "Confirmer"
+    "confirm": "Confirmer",
+    "skip": "Passer",
+    "next" : "Suivant",
+    "done" : "Terminé",
 
+
+    "@_ONBOARDING": {},
+    "title1": "Bienvenue sur Bus Trackr",
+    "title2": "Des Déplacements Sans Effort",
+    "title3": "Anticipez Votre Trajet",
+    "body1" : "Découvrez un nouveau niveau de confort dans vos déplacements quotidiens avec Bus Trackr. Notre application vous fournit un suivi en temps réel et des informations sur les bus dans votre ville. Dites adieu à l'attente aux arrêts de bus et bonjour à rester informé en déplacement.",
+    "body2": "Naviguez dans la ville comme jamais auparavant avec Des Déplacements Sans Effort. Suivez facilement les itinéraires des bus, les horaires d'arrivée et les mises à jour de service grâce à notre application intuitive Bus Trackr. Les déplacements sans effort ne sont qu'à un clic.",
+    "body3": "Anticipez votre trajet avec Bus Trackr. Optimisez votre temps en accédant aux horaires des bus en temps réel, aux prévisions d'arrivée précises et même aux notifications en cas de retard. Votre trajet en douceur commence ici.",
+
+    "@_DAYS": {},
+    "monday": "Lundi",
+    "tuesday": "Mardi",
+    "wednesday": "Mercredi",
+    "thursday": "Jeudi",
+    "friday": "Vendredi",
+    "saturday": "Samedi",
+    "sunday": "Dimanche",
+    "daily": "Quotidien"
+    
+    
+
+ 
 
 }

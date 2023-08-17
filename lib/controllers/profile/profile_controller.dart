@@ -1,12 +1,14 @@
 import 'dart:io';
 
 import 'package:bustrackr/controllers/home/home_controller.dart';
+import 'package:bustrackr/core/services/services.dart';
 import 'package:bustrackr/core/shared/notifications/showsnackbar.dart';
 import 'package:bustrackr/data/data_models/users_model.dart';
 import 'package:bustrackr/data/data_source/firestore_data.dart';
 import 'package:bustrackr/data/data_source/user_data.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfileController extends GetxController {
@@ -60,7 +62,7 @@ class ProfileController extends GetxController {
     user = updatedUser;
 
     // change in boxHive
-    await homeController.myServices.boxHive.put("user", updatedUser.toJson());
+    await Get.find<MyServices>().boxHive.put("user", updatedUser.toJson());
     homeController.initData();
     homeController.update();
 
@@ -76,14 +78,14 @@ class ProfileController extends GetxController {
         update();
       } else {
         MySnackBar.showCustomSnackBar(
-          title: 'Error',
-          message: 'No image selected',
+          title: AppLocalizations.of(Get.context!)!.error,
+          message: AppLocalizations.of(Get.context!)!.noImageSelected,
         );
       }
     } catch (_) {
       MySnackBar.showCustomSnackBar(
-        title: 'Error',
-        message: 'Error while picking image',
+        title: AppLocalizations.of(Get.context!)!.error,
+        message: AppLocalizations.of(Get.context!)!.errorWhilePickingImage,
       );
     }
   }
@@ -98,9 +100,9 @@ class ProfileController extends GetxController {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "Change Photo",
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(Get.context!)!.changePhoto,
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
@@ -108,14 +110,15 @@ class ProfileController extends GetxController {
               const Divider(),
               ListTile(
                 leading: const Icon(Icons.camera_alt_outlined, size: 32),
-                title: const Text("Take a photo"),
+                title: Text(AppLocalizations.of(Get.context!)!.takeAPhoto),
                 onTap: () {
                   pickImage(ImageSource.camera);
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.photo, size: 32),
-                title: const Text("Choose from gallery"),
+                title:
+                    Text(AppLocalizations.of(Get.context!)!.chooseFromGallery),
                 onTap: () {
                   pickImage(ImageSource.gallery);
                 },
@@ -123,7 +126,7 @@ class ProfileController extends GetxController {
               if (user!.photoUrl != null)
                 ListTile(
                   leading: const Icon(Icons.delete, size: 32),
-                  title: const Text("Remove photo"),
+                  title: Text(AppLocalizations.of(Get.context!)!.removePhoto),
                   onTap: () async {
                     FireStoreData fireStoreData = FireStoreData();
                     await fireStoreData.deleteImage(user!.photoUrl!);

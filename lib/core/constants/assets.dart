@@ -35,4 +35,9 @@ class ImageAssets {
   static String bus18 = "$rootImages/bus_18.png";
   static String bus19 = "$rootImages/bus_19.png";
   static String bus20 = "$rootImages/bus_20.png";
+
+  // onboarding
+  static String onboarding1 = "$rootImages/onb1.jpg";
+  static String onboarding2 = "$rootImages/onb2.jpg";
+  static String onboarding3 = "$rootImages/onb3.jpg";
 }

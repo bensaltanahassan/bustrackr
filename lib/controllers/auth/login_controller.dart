@@ -8,6 +8,7 @@ import 'package:bustrackr/core/classes/login_exception.dart';
 import 'package:bustrackr/core/constants/routes.dart';
 import 'package:bustrackr/core/shared/notifications/showsnackbar.dart';
 import 'package:bustrackr/core/services/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginController extends GetxController {
   late bool showPassword;
@@ -35,7 +36,7 @@ class LoginController extends GetxController {
       if (resp is FirebaseAuthException) {
         String message = LoginException(resp).handleException();
         MySnackBar.showCustomSnackBar(
-          title: "Error",
+          title: AppLocalizations.of(Get.context!)!.error,
           message: message,
         );
       } else if (resp is UserCredential) {

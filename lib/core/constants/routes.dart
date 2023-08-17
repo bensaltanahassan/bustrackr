@@ -15,4 +15,5 @@ class AppRoutes {
   static String adddailyreminder = "/adddailyreminder";
   static String contactus = "/contactus";
   static String languages = "/languages";
+  static String onboarding = "/onboarding";
 }

@@ -81,6 +81,12 @@
     "before": "before",
     "at": "at",
     "pleaseSelect": "Please Select",
+    "min" : "min",
+    "hr": "hr",
+    "dailyAddedWithSuccess": "Your daily reminder has been added correctly!",
+    "dailyReminderUpdatedSuccessfully": "Your daily reminder was updated succesfully.",
+    "dailyReminderDeletedSuccessfully": "Daily reminder deleted successfully.",
+
 
     "@_SET_DAILY_REMINDER": {},
     "update": "Update",
@@ -117,6 +123,29 @@
     "line": "Line",
     "cancel": "Cancel",
     "ok": "Ok",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "skip": "Skip",
+    "next": "Next",
+    "done": "Done",
+
+
+
+    "@_ONBOARDING": {},
+    "title1": "Welcome to Bus Trackr",
+    "title2": "Effortless Commuting",
+    "title3": "Stay Ahead of Your Journey",
+    "body1" : "Discover a new level of convenience in your daily commute with Bus Trackr. Our app provides real-time tracking and information for buses in your city. Say goodbye to waiting at bus stops and hello to staying informed on the go.",
+    "body2": "Navigate city travel like never before with Effortless Commuting. Seamlessly track bus routes, arrival times, and service updates using our intuitive Bus Trackr app. Effortless commuting is just a tap away.",
+    "body3": "Stay ahead of your journey with Bus Trackr. Make the most of your time by accessing up-to-the-minute bus schedules, accurate arrival predictions, and even notifications for delays. Your smooth commute starts here.",
+
+    "@_LOCALE": {},
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "daily": "Daily"
     
 }

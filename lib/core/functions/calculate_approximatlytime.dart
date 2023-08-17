@@ -26,11 +26,11 @@ String formatTime(double numberMinutes) {
   if (numberMinutes >= 60) {
     int hours = numberMinutes ~/ 60;
     int remainingMinutes = (numberMinutes % 60).toInt();
-    return '$hours hr ${remainingMinutes}min';
+    return '$hours ${AppLocalizations.of(Get.context!)!.hr} $remainingMinutes ${AppLocalizations.of(Get.context!)!.min}';
   } else if (numberMinutes >= 1) {
-    return '${numberMinutes.toInt()} min';
+    return '${numberMinutes.toInt()} ${AppLocalizations.of(Get.context!)!.min}';
   } else if (numberMinutes > .1) {
-    return '< 1 min';
+    return '< 1 ${AppLocalizations.of(Get.context!)!.min}';
   } else {
     return AppLocalizations.of(Get.context!)!.arrived;
   }

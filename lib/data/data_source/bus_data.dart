@@ -14,7 +14,7 @@ class BusData {
     });
   }
 
-  Future<List<QueryDocumentSnapshot>> getBusData() async {
+  Future<List<QueryDocumentSnapshot>> getAllBuss() async {
     QuerySnapshot querySnapshot = await buss.get();
     return querySnapshot.docs;
   }
@@ -26,6 +26,13 @@ class BusData {
     if (res.exists) {
       await buss.doc(busId).update(data);
     }
+  }
+
+  // getBusById
+  getBusById({required String busId}) async {
+    DocumentSnapshot<Map<String, dynamic>> data = await buss.doc(busId).get();
+
+    return BusModel.fromJson(data.data() as Map<String, dynamic>);
   }
 
   addRouteToBus({required String busId, required RoutesModel route}) async {

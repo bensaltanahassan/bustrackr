@@ -3,6 +3,7 @@ import 'package:bustrackr/data/data_source/auth_data.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:bustrackr/core/shared/notifications/showsnackbar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ForgetPasswordController extends GetxController {
   bool isLoading = false;
@@ -20,12 +21,12 @@ class ForgetPasswordController extends GetxController {
           .sendEmailResetPassword(emailController.text.trim().toLowerCase());
       if (res == true) {
         MySnackBar.showCustomSnackBar(
-            title: "Succès",
-            message: "Un email a été envoyé à votre adresse email");
+            title: AppLocalizations.of(Get.context!)!.success,
+            message: AppLocalizations.of(Get.context!)!.emailSentSuccessfully);
       } else {
         String message = ForgetPasswordException(res).handleException();
         MySnackBar.showCustomSnackBar(
-          title: "Error",
+          title: AppLocalizations.of(Get.context!)!.error,
           message: message,
         );
       }

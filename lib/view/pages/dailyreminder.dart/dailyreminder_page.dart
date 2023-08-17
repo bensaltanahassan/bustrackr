@@ -1,4 +1,5 @@
 import 'package:bustrackr/controllers/dailyreminder/dailyreminder_controller.dart';
+import 'package:bustrackr/core/shared/handling_data_view.dart';
 import 'package:bustrackr/view/widgets/dailyreminder/customcarddailyreminder.dart';
 import 'package:bustrackr/view/widgets/home/drawer_home.dart';
 import 'package:flutter/material.dart';
@@ -31,17 +32,20 @@ class DailyReminderPage extends StatelessWidget {
         ],
       ),
       body: GetBuilder<DailyReminderController>(builder: (controller) {
-        return ListView.separated(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          itemCount: controller.allDailyReminders.length,
-          itemBuilder: (context, index) {
-            return CustomCardDailyReminder(
-              dailyReminderModel: controller.allDailyReminders[index],
-            );
-          },
-          separatorBuilder: (context, index) {
-            return const SizedBox(height: 10);
-          },
+        return HandlingDataView(
+          isLoading: controller.isLoading,
+          child: ListView.separated(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            itemCount: controller.dailyRemindersList.length,
+            itemBuilder: (context, index) {
+              return CustomCardDailyReminder(
+                dailyReminderModel: controller.dailyRemindersList[index],
+              );
+            },
+            separatorBuilder: (context, index) {
+              return const SizedBox(height: 10);
+            },
+          ),
         );
       }),
     );

@@ -13,23 +13,27 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    LoginController controller = Get.put(LoginController());
+    Get.put(LoginController());
     return Scaffold(
-      bottomNavigationBar: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(AppLocalizations.of(context)!.dontHaveAccount),
-          TextButton(
-            style: ButtonStyle(
-                padding:
-                    MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero)),
-            onPressed: controller.goToSignUp,
-            child: Text(
-              AppLocalizations.of(context)!.signup,
-            ),
-          ),
-        ],
-      ),
+      bottomNavigationBar: GetBuilder<LoginController>(builder: (controller) {
+        return controller.isloading
+            ? const SizedBox()
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(AppLocalizations.of(context)!.dontHaveAccount),
+                  TextButton(
+                    style: ButtonStyle(
+                        padding: MaterialStateProperty.all<EdgeInsets>(
+                            EdgeInsets.zero)),
+                    onPressed: controller.goToSignUp,
+                    child: Text(
+                      AppLocalizations.of(context)!.signup,
+                    ),
+                  ),
+                ],
+              );
+      }),
       body: SafeArea(
         child: GetBuilder<LoginController>(builder: (controller) {
           return HandlingDataView(
